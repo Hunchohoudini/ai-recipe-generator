@@ -1,4 +1,4 @@
-import type { FormEvent } from "react";
+import { useState, type FormEvent } from "react";
 import "./App.css";
 
 import { generateClient } from "aws-amplify/data";
@@ -21,7 +21,7 @@ export default function App() {
     try {
       const ingredients = ingredientsInput
         .split(",")
-        .map((s) => s.trim())
+        .map((s: string) => s.trim())
         .filter(Boolean);
 
       const { data, errors } = await client.queries.askBedrock({ ingredients });
